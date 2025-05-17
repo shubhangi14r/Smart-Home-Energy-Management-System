@@ -1,0 +1,45 @@
+
+Smart Home Energy Management System - Implementation Steps
+
+1. Place the Arduino Uno on the breadboard or in the Tinkercad workspace.
+
+2. Connect the TMP36 Temperature Sensor:
+   - VCC → 5V (Arduino)
+   - GND → GND (Arduino)
+   - OUT → A1 (Arduino Analog Input)
+
+3. Set up the LDR (Light Dependent Resistor):
+   - One terminal of LDR → 5V
+   - Other terminal → A0 (Arduino Analog Input)
+   - 10kΩ resistor from A0 → GND (acts as a voltage divider)
+
+4. Connect the Relay Modules:
+   - Relay 1 IN → D7 (controls Fan)
+   - Relay 2 IN → D8 (controls Light)
+   - VCC of both relays → 5V (Arduino)
+   - GND of both relays → GND (Arduino)
+   - Connect simulated fan (motor/LED) and light (bulb/LED) to relay terminals
+
+5. Attach the 16x2 LCD Display:
+   - RS → D12
+   - E → D11
+   - D4 → D5
+   - D5 → D4
+   - D6 → D3
+   - D7 → D6
+   - VSS → GND, VDD → 5V, RW → GND
+   - VO (contrast) → middle pin of a potentiometer
+   - Sides of potentiometer → 5V and GND
+
+6. Write the Arduino Sketch:
+   - Include LiquidCrystal library
+   - Read analog data from TMP36 and LDR
+   - Calculate temperature and determine light intensity
+   - Display values on the LCD
+   - Use conditions to activate/deactivate relays based on sensor values
+
+7. Upload the Code to the Arduino using Arduino IDE or simulate in Tinkercad.
+
+8. Test the System:
+   - Adjust TMP36 and LDR values (sliders in Tinkercad) to verify relay operation
+   - Observe real-time temperature and light readings on the LCD display

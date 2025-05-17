@@ -1,0 +1,21 @@
+
+Hardware requirements
+
+| Component                           | Quantity  | Purpose                             |
+| ----------------------------------- | --------- | ----------------------------------- |
+| Arduino Uno R3                      | 1         | Microcontroller unit                |
+| TMP36 Temperature Sensor            | 1         | Senses ambient temperature          |
+| LDR (Light Dependent Resistor)      | 1         | Measures ambient light intensity    |
+| 10kΩ Resistor (for LDR)             | 1         | Pull-down resistor for LDR          |
+| Relay Module (2-channel)            | 1         | Controls fan and light              |
+| LED or Bulb                         | 1         | Simulated light appliance           |
+| DC Motor or Fan                     | 1         | Simulated fan                       |
+| 16x2 LCD Display with Potentiometer | 1         | Displays temperature and light data |
+| Breadboard + Jumper Wires           | As needed | Circuit connections                 |
+| USB Cable                           | 1         | Upload code and power the Arduino   |
+
+Software Requirements
+
+1)Arduino IDE (for code programming)
+
+2)Tinkercad Circuits (for simulation and virtual testing)
