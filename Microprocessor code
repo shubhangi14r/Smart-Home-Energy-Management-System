@@ -1,0 +1,60 @@
+#include <LiquidCrystal.h>
+
+// LCD pins: RS, E, D4, D5, D6, D7
+LiquidCrystal lcd(12, 11, 5, 4, 3, 6);
+
+const int tempPin = A1;     // TMP36 output
+const int ldrPin = A0;      // LDR output
+const int fanRelay = 7;
+const int lightRelay = 8;
+
+// Thresholds
+const float tempThreshold = 30.0;  // Celsius
+const int lightThreshold = 500;    // LDR analog value
+
+void setup() {
+  pinMode(fanRelay, OUTPUT);
+  pinMode(lightRelay, OUTPUT);
+  digitalWrite(fanRelay, LOW);
+  digitalWrite(lightRelay, LOW);
+
+  lcd.begin(16, 2);
+  lcd.print("Smart Home Ready");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop() {
+  // TMP36 Temp Calculation
+  int tempReading = analogRead(tempPin);
+  float voltage = tempReading * (5.0 / 1023.0);
+  float temperatureC = (voltage - 0.5) * 100;
+
+  // LDR Reading
+  int ldrValue = analogRead(ldrPin);
+
+  // Display on LCD
+  lcd.setCursor(0, 0);
+  lcd.print("T:");
+  lcd.print(temperatureC);
+  lcd.print((char)223); // Degree symbol
+  lcd.print("C");
+
+  lcd.setCursor(0, 1);
+  lcd.print("L:");
+  lcd.print(ldrValue);
+
+  // Fan control
+  if (temperatureC >= tempThreshold)
+    digitalWrite(fanRelay, HIGH);
+  else
+    digitalWrite(fanRelay, LOW);
+
+  // Light control
+  if (ldrValue < lightThreshold)
+    digitalWrite(lightRelay, HIGH);
+  else
+    digitalWrite(lightRelay, LOW);
+
+  delay(2000);
+}
